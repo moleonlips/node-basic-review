@@ -1,21 +1,22 @@
 const express = require("express");
-const path = require('path');
-
+const appConfig = require('./configs/app.config');
 require('./helpers/env.helper');
 
-const app = express();
+const studentRouter = require('./routes/student.route');
+const roomRouter = require('./routes/room.route');
 
-app.use(express.static(path.join(__dirname, 'public')))
-app.set('views', path.join(__dirname, 'views'))
-app.set('view engine', 'ejs');
+const app = express();
+const path = require('path');
+
+// config view engine
+appConfig(app);
 
 const hostname = process.env.HOSTNAME
 const port = process.env.PORT
 
 app.listen(port, hostname, () => {
-  console.log(`app listening on port ${port}`);
+  console.log(`app listening on port ${'http://' + hostname + ':' + port}`);
 })
 
-app.get('/', (req, res) => {
-  res.render('home.ejs',)
-})
+app.use('/student', studentRouter);
+app.use('/room', roomRouter);

@@ -12,9 +12,11 @@
 
 ## migration
 -- Chua nhung thay doi ve database
+-- Including any changes about database
 
 ## models
 -- Tao entry cho cac doi tuong, tac nhan tham gia he thong
+-- Including set of entry object, they will be take part in the system
 
 ## public
 -- Chua nhung file tinh, co the goi tu clients
@@ -30,3 +32,12 @@
 
 ## views
 -- Chua code UI he thong
+
+
+# EXPORT DEFAULT:
+- What you are export, default it will be used when you call.
+- For example:
+-- modules.export = myfunction
+- So, when you require the file which including 'myfunction':
+-- const myfunct = require (filename.include.module.export);
+=> it will be reference that function thought you set any name for it
