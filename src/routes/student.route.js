@@ -5,9 +5,10 @@ studentRouter.get('/', (req, res) => {
   res.render('home.ejs',)
 })
 
-studentRouter.get('/triangel', (req, res) => {
-  res.send('hello from D!');
-}
+studentRouter.get('/triangel',
+  (req, res) => {
+    res.send('hello from D!');
+  }
 );
 
 module.exports = studentRouter;
