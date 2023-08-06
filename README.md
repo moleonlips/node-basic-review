@@ -20,19 +20,23 @@
 
 ## public
 -- Chua nhung file tinh, co the goi tu clients
+-- Including system files that's able to call from client side
 
 ## routes
 -- Thiet lap dieu huong he thong
+-- System navigates configuations
 
 ## seeder
 -- Mock data phuc vu viec testing
+-- Mock data provide for testing
 
 ## services
 -- Chua nhung services, query call den DB
+-- Including script that will be call to database
 
 ## views
 -- Chua code UI he thong
-
+-- HTML
 
 # EXPORT DEFAULT:
 - What you are export, default it will be used when you call.
