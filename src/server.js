@@ -11,8 +11,10 @@ const path = require('path');
 // config view engine
 appConfig(app);
 
-const hostname = process.env.HOSTNAME
-const port = process.env.PORT
+const hostname = process.env.HOSTNAME || `localhost`
+const port = process.env.PORT || 8080
+
+console.log(process.env)
 
 app.listen(port, hostname, () => {
   console.log(`app listening on port ${'http://' + hostname + ':' + port}`);
