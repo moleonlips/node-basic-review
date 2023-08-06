@@ -21,11 +21,13 @@ app.listen(port, hostname, () => {
 
 connection.query(
   'SELECT * FROM room',
-  (err, result) => {
+  (err, result, fields) => {
     if (err) {
       console.log('>>> err: ', err)
     }
     console.log('>>> result: ', result);
+    console.log('>>> fields: ', fields);
+
   }
 )
 
