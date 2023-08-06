@@ -45,3 +45,12 @@
 - So, when you require the file which including 'myfunction':
 -- const myfunct = require (filename.include.module.export);
 => it will be reference that function thought you set any name for it
+
+# SOME PROBLEMS NEED TO CARE IN DEVELOPING - KEYWORDS
+- Database rate limit
+- Connection never close
+- Connection cost
+- Performace
+- Connection pooling // Connection pool pattern
+-- Giam thoi gian ket noi den CSDL bang cach tai su dung (reusing) cac ket noi truoc do.
+-- Han che viec ung dung bi qua tai (overload) - He thong co the cham nhung khong the bi sap.

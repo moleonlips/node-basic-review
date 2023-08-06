@@ -2,7 +2,7 @@ const express = require("express");
 const appConfig = require('./configs/app.config');
 require('./helpers/env.helper');
 const connection = require("./configs/database.config");
-
+const path = require("path");
 const studentRouter = require('./routes/student.route');
 const roomRouter = require('./routes/room.route');
 
@@ -20,13 +20,11 @@ app.listen(port, hostname, () => {
 
 connection.query(
   'SELECT * FROM room',
-  (err, result, fields) => {
+  (err, result) => {
     if (err) {
       console.log('>>> err: ', err)
     }
-    console.log('>>> result: ', result);
-    console.log('>>> fields: ', fields);
-
+    console.log(path.resolve(__dirname, __filename), '\n>>> result: ', result);
   }
 )
 

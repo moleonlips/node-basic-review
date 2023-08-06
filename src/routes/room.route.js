@@ -1,9 +1,8 @@
 const express = require('express');
 const roomRouter = express.Router();
+const roomControllers = require("../controllers/room.controller");
 
-roomRouter.get('/', (req, res) => {
-  res.send(`get all room of the hotel!`)
-})
+roomRouter.get('/', roomControllers.getAllRooms)
 
 roomRouter.get('/roomname/:roomname',
   (req, res, next) => {
