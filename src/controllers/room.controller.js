@@ -11,7 +11,6 @@ const getAllRooms = (req, res) => {
       res.send(JSON.stringify(rooms));
     }
   )
-  connection.end();
 }
 
 module.exports = {

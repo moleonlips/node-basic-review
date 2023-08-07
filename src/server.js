@@ -18,15 +18,6 @@ app.listen(port, hostname, () => {
   console.log(`>>> url app: ${'http://' + hostname + ':' + port}`);
 })
 
-connection.query(
-  'SELECT * FROM room',
-  (err, result) => {
-    if (err) {
-      console.log('>>> err: ', err)
-    }
-    console.log(path.resolve(__dirname, __filename), '\n>>> result: ', result);
-  }
-)
 
 app.use('/student', studentRouter);
 app.use('/room', roomRouter);
