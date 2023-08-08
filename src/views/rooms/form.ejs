@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Booking</title>
 
   <link rel="stylesheet" href="/css/style.css">
 
@@ -12,10 +12,10 @@
 
 <body>
   <ul>
-    <li><a href="/room/create">Home</a></li>
-    <li><a href="/room">News</a></li>
+    <li><a href="/room/home">Home</a></li>
+    <li><a href="/room/form">Form</a></li>
     <li><a href="">Contact</a></li>
-    <li style="float:right"><a class="active" href="/room">About</a></li>
+    <li style="float:right"><a class="active" href="/room/home">About</a></li>
   </ul>
 
   <!-- 
@@ -28,7 +28,7 @@
  -->
 
   <div class="form">
-    <form action="/room/create-room" method="post">
+    <form action="/room/save" method="post">
       <fieldset>
         <legend>
           <h2>Add a new room:</h2>

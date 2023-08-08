@@ -2,25 +2,11 @@ const express = require('express');
 const roomRouter = express.Router();
 const roomControllers = require("../controllers/room.controller");
 
-roomRouter.get('/', roomControllers.getAllRooms);
+roomRouter.get('/home', roomControllers.getAllRooms);
 
-roomRouter.get('/create', roomControllers.createANewRoom);
+roomRouter.get('/form', roomControllers.createANewRoom);
 
-roomRouter.get('/roomname/:roomname',
-  (req, res, next) => {
-    req.headers['x-bio-id'] = 'xin chao viet nam';
-    console.log(`>>> step: `, 1);
-    next();
-    console.log(`>>> step: `, 2);
-    res.send(`Are you searching room ${req.params.roomname}`);
-  },
-  (req, res) => {
-    console.log(`>>> step: `, 3);
-    console.log(`>>> x-bio-id: `, req.headers['x-bio-id'])
-  }
-)
-
-roomRouter.post('/create-room', roomControllers.postRoom)
+roomRouter.post('/save', roomControllers.saveRoom)
 
 module.exports = roomRouter;
 

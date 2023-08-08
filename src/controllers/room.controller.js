@@ -9,23 +9,29 @@ const getAllRooms = (req, res) => {
     'SELECT * FROM room',
     (err, result) => {
       rooms = result;
-      res.send(JSON.stringify(rooms));
+      return res.render('rooms/home.ejs', { list: rooms });
     }
   )
 }
 
-const postRoom = (req, res) => {
-  console.log(`>>> the body was sent: `, req.body);
-  return res.render('rooms/list.ejs')
+const saveRoom = (req, res) => {
+  console.log('>>> room name: ', req.body.room);
+  console.log('>>> room length: ', req.body.length);
+  return res.render(
+    'rooms/save-success.ejs',
+    {
+      roomName: req.body.room,
+      roomLength: req.body.length
+    }
+  );
 }
 
 const createANewRoom = (req, res) => {
-  console.log(bodyParser.urlencoded(req.body));
-  return res.render('rooms/room.ejs');
+  return res.render('rooms/form.ejs');
 }
 
 module.exports = {
   getAllRooms,
   createANewRoom,
-  postRoom
+  saveRoom
 };
