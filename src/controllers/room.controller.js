@@ -1,4 +1,5 @@
 const connection = require("../configs/database.config");
+const bodyParser = require("body-parser");
 
 const getAllRooms = (req, res) => {
   // logic handlers
@@ -13,6 +14,18 @@ const getAllRooms = (req, res) => {
   )
 }
 
+const postRoom = (req, res) => {
+  console.log(`>>> the body was sent: `, req.body);
+  return res.render('rooms/list.ejs')
+}
+
+const createANewRoom = (req, res) => {
+  console.log(bodyParser.urlencoded(req.body));
+  return res.render('rooms/room.ejs');
+}
+
 module.exports = {
-  getAllRooms
+  getAllRooms,
+  createANewRoom,
+  postRoom
 };

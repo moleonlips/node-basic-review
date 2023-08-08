@@ -132,3 +132,6 @@ app.get('/pool', (req, res) => { // cach thuc hien tuong tu PERSISTENT CONNECTIO
   }
 });
 ```
+
+## BODY PARSER
+https://github.com/expressjs/body-parser

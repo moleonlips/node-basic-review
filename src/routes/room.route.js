@@ -2,7 +2,9 @@ const express = require('express');
 const roomRouter = express.Router();
 const roomControllers = require("../controllers/room.controller");
 
-roomRouter.get('/', roomControllers.getAllRooms)
+roomRouter.get('/', roomControllers.getAllRooms);
+
+roomRouter.get('/create', roomControllers.createANewRoom);
 
 roomRouter.get('/roomname/:roomname',
   (req, res, next) => {
@@ -18,9 +20,7 @@ roomRouter.get('/roomname/:roomname',
   }
 )
 
-roomRouter.get('/roomImages', (req, res) => {
-  res.render('room.ejs')
-})
+roomRouter.post('/create-room', roomControllers.postRoom)
 
 module.exports = roomRouter;
 
