@@ -1,3 +1,9 @@
+# LESSON 8:
+## Run project with Web client UI mode
+## Enhance restful using asign await fucntions
+
+# LESSON 7: complete restful API CRUD for Room entry.
+
 ## configs
 -- Noi thiet lap cau hinh he thong
 

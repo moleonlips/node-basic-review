@@ -27,4 +27,3 @@ app.listen(port, hostname, () => {
 
 app.use('/student', studentRouter);
 app.use('/room', roomRouter);
-app.use('/home', homeRouter);
