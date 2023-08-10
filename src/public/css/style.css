@@ -68,3 +68,12 @@ thead tr {
 tbody tr:hover {
   background-color: #c2d3eb;
 }
+
+.right-window {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 30%;
+  background-color: rgb(187, 187, 187);
+}

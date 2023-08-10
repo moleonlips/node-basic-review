@@ -64,7 +64,7 @@ const saveRoom = async (req, res) => {
     [room, length, width, height, area, capacity]
   )
   console.log('>>> A new room was inserted: ', req.body);
-  await res.render('rooms/save-success.ejs', { newRoom: req.body });
+  await res.render('rooms/save-success.ejs', { newRoom: req.body, message: 'Insert successfully!' });
 }
 
 const updateRoomInfo = async (req, res) => {
@@ -89,7 +89,9 @@ const updateRoomInfo = async (req, res) => {
   // )
 
   await connection.query(roomServices.updateRoom, [room, length, width, height, area, capacity, roomID]);
-  res.send(200, `Room ${roomID} was updated: ${req.body}`);
+  // res.send(200, `Room ${roomID} was updated: ${req.body}`);
+
+  await res.render('rooms/save-success.ejs', { newRoom: req.body, message: 'Update successfully!' });
 }
 
 const deleteRoom = async (req, res) => {
@@ -116,12 +118,16 @@ const createANewRoom = (req, res) => {
 }
 
 const searchRoom = async (req, res) => {
-  console.log('>>> key search: ', req.params.keysearch)
   const [result, fields] = await connection.query(
     roomServices.searchRooms, [req.params.keysearch]
   )
   if (result.length) res.send(200, result);
   else res.send(400, `Have not any room with that name!`);
+}
+
+const getUpdateForm = async (req, res) => {
+  const [result, fields] = await connection.query(roomServices.getRoomByID, [req.params.id]);
+  await res.render('rooms/update-form.ejs', { roomUpdate: result[0] });
 }
 
 module.exports = {
@@ -131,5 +137,6 @@ module.exports = {
   saveRoom,
   updateRoomInfo,
   deleteRoom,
-  searchRoom
+  searchRoom,
+  getUpdateForm
 };

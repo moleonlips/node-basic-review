@@ -46,7 +46,7 @@
                 <%= room.max_capacity %>
               </td>
               <td>
-                <button>Edit</button>
+                <a href="room/updateForm/<%=room.id%>">Edit</a>
                 <button>Del</button>
               </td>
             </tr>
@@ -54,6 +54,8 @@
         </tbody>
       </table>
     </div>
+
+    <!-- <%- include('../partials/right-window.ejs') %> -->
 </body>
 
 </html>

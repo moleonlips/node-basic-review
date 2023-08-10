@@ -17,5 +17,7 @@ roomRouter.delete('/delete/:id', roomControllers.deleteRoom)
 
 roomRouter.get('/search/room-name/:keysearch', roomControllers.searchRoom);
 
+roomRouter.get('/updateForm/:id', roomControllers.getUpdateForm)
+
 module.exports = roomRouter;
 

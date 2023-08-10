@@ -20,15 +20,17 @@
 
   <div class="container">
     <% if(newRoom) { %>
-      <h3>Rooms has saved already!</h3>
+      <h3>
+        <%= message %>
+      </h3>
       <p>Room info:</p>
       <p>
-        - room: <%= room.room %> <br>
-          - length: <%= room.length %> <br>
-            - height: <%= room.height %> <br>
-              - width: <%= room.width %> <br>
-                - area: <%= room.length * room.width %> <br>
-                  - capacity: <%= room.capacity %>
+        - room: <%= newRoom.room %> <br>
+          - length: <%= newRoom.length %> <br>
+            - height: <%= newRoom.height %> <br>
+              - width: <%= newRoom.width %> <br>
+                - area: <%= newRoom.length * newRoom.width %> <br>
+                  - capacity: <%= newRoom.capacity %>
       </p>
       <% } %>
   </div>
