@@ -19,10 +19,10 @@
   </ul>
 
   <div class="container">
-    <% if(newRoom) { %>
-      <h3>
-        <%= message %>
-      </h3>
+    <h3>
+      <%= message %>
+    </h3>
+    <% if(newRoom.length !=0) { %>
       <p>Room info:</p>
       <p>
         - room: <%= newRoom.room %> <br>

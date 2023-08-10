@@ -13,11 +13,13 @@ roomRouter.post('/create', roomControllers.saveRoom);
 
 roomRouter.post('/update/:id', roomControllers.updateRoomInfo);
 
-roomRouter.delete('/delete/:id', roomControllers.deleteRoom)
+roomRouter.get('/delete/:id', roomControllers.deleteRoom)
 
 roomRouter.get('/search/room-name/:keysearch', roomControllers.searchRoom);
 
 roomRouter.get('/updateForm/:id', roomControllers.getUpdateForm)
+
+roomRouter.get('/delete-confirm/:id', roomControllers.getDeleteConfirm)
 
 module.exports = roomRouter;
 

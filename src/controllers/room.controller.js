@@ -110,7 +110,7 @@ const deleteRoom = async (req, res) => {
 
   await connection.query(roomServices.deleteRoom, [roomID])
   console.log(`Rome ${roomID} was deleted!`);
-  res.send(200, 'Delete successfully!');
+  await res.render('rooms/save-success.ejs', { message: 'That room was deleted successfully!', newRoom: [] });
 }
 
 const createANewRoom = (req, res) => {
@@ -130,6 +130,11 @@ const getUpdateForm = async (req, res) => {
   await res.render('rooms/update-form.ejs', { roomUpdate: result[0] });
 }
 
+const getDeleteConfirm = async (req, res) => {
+  const [result] = await connection.query(roomServices.getRoomByID, [req.params.id]);
+  await res.render('rooms/delete-confirm.ejs', { myRoom: result[0], message: 'Do you want to DELETE this room?' });
+}
+
 module.exports = {
   getAllRooms,
   getRoomByID,
@@ -138,5 +143,6 @@ module.exports = {
   updateRoomInfo,
   deleteRoom,
   searchRoom,
-  getUpdateForm
+  getUpdateForm,
+  getDeleteConfirm
 };
