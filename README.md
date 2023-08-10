@@ -1,9 +1,14 @@
 # LESSON 8:
 ## Run project with Web client UI mode
 ## Enhance restful using asign await fucntions
+## Async - Await
+- Async: Told that a function would be execute with synchronous mode
+- Await: Markup the step of process will be run
 
-# LESSON 7: complete restful API CRUD for Room entry.
+# LESSON 7: 
+## Complete restful API CRUD for Room entry.
 
+# OTHERS
 ## configs
 -- Noi thiet lap cau hinh he thong
 

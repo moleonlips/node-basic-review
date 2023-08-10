@@ -2,36 +2,44 @@ const connection = require("../configs/database.config");
 const path = require("path");
 const roomServices = require("../services/room.service");
 
-const getAllRooms = (req, res) => {
-  connection.query(
-    roomServices.getAllRooms,
-    (err, result) => {
-      if (err) throw new Error(`Something went wrong: ${err}`);
+const getAllRooms = async (req, res) => {
+  // connection.query(
+  //   roomServices.getAllRooms,
+  //   (err, result) => {
+  //     if (err) throw new Error(`Something went wrong: ${err}`);
 
-      console.log('>> result: ', result)
-      // return res.render('rooms/home.ejs', { list: result });
-      res.send(200, result);
-    }
-  )
+  //     console.log('>> result: ', result)
+  //     return res.render('rooms/home.ejs', { list: result });
+  //     res.send(200, result);
+  //   }
+  // )
+
+  /// connect db using PROMISE WRAPPER
+  const [result, fields] = await connection.query(`SELECT * FROM room`);
+  console.log('>>> check result: ', result);
+  return res.render('rooms/home.ejs')
 }
 
-const getRoomByID = (req, res) => {
+const getRoomByID = async (req, res) => {
   console.log('>>> req.params.id: ', req.params.id)
   const roomID = req.params.id;
 
-  connection.query(
-    roomServices.getRoomByID, [roomID],
-    (err, result) => {
-      if (err) throw new Error(`Something went wrong: ${err}`);
+  // connection.query(
+  //   roomServices.getRoomByID, [roomID],
+  //   (err, result) => {
+  //     if (err) throw new Error(`Something went wrong: ${err}`);
 
-      console.log('>> result: ', result)
-      // return res.render('rooms/home.ejs', { list: result });
-      res.send(200, result);
-    }
-  )
+  //     console.log('>> result: ', result)
+  //     res.send(200, result);
+  //     // return res.render('rooms/home.ejs', { list: result });
+  //   }
+  // )
+
+  const [result, feilds] = await connection.query(roomServices.getRoomByID, [roomID]);
+  res.send(200, result);
 }
 
-const saveRoom = (req, res) => {
+const saveRoom = async (req, res) => {
 
   const room = req.body.room;
   const length = Number(req.body.length);
@@ -40,18 +48,26 @@ const saveRoom = (req, res) => {
   const capacity = Number(req.body.capacity);
   const area = length * width;
 
-  connection.query(
+  // connection.query(
+  //   roomServices.addANewRoom,
+  //   [room, length, width, height, area, capacity],
+  //   (err, result) => {
+  //     if (err) throw new Error('some thing went wrong: ', err.message);
+  //     // res.send(200, 'Insert successfully!')
+  //     return res.render('rooms/save-success.ejs');
+  //   }
+  // )
+
+  /// MYSQL2 PROMISS WRAPPER
+  await connection.query(
     roomServices.addANewRoom,
-    [room, length, width, height, area, capacity],
-    (err, result) => {
-      if (err) throw new Error('some thing went wrong: ', err.message);
-      res.send(200, 'Insert successfully!')
-      return res.render('rooms/save-success.ejs');
-    }
+    [room, length, width, height, area, capacity]
   )
+  console.log('>>> A new room was inserted: ', req.body);
+  res.render('rooms/save-success.ejs');
 }
 
-const updateRoomInfo = (req, res) => {
+const updateRoomInfo = async (req, res) => {
   const room = req.body.room;
   const length = Number(req.body.length);
   const width = Number(req.body.width);
@@ -62,30 +78,37 @@ const updateRoomInfo = (req, res) => {
   const roomID = req.params.id;
   console.log(`>>> room id: `, roomID);
 
-  connection.query(
-    roomServices.updateRoom,
-    [room, length, width, height, area, capacity, roomID],
-    (err, result) => {
-      if (err) throw new Error('Something went wrong: ', err.message);
-      req.body = { ...req.body, roomID: roomID }
-      res.send(200, `Room has been updated successfully: ${req.body}`);
-    }
-  )
+  // connection.query(
+  //   roomServices.updateRoom,
+  //   [room, length, width, height, area, capacity, roomID],
+  //   (err, result) => {
+  //     if (err) throw new Error('Something went wrong: ', err.message);
+  //     req.body = { ...req.body, roomID: roomID }
+  //     res.send(200, `Room has been updated successfully: ${req.body}`);
+  //   }
+  // )
+
+  await connection.query(roomServices.updateRoom, [room, length, width, height, area, capacity, roomID]);
+  res.send(200, `Room ${roomID} was updated: ${req.body}`);
 }
 
-const deleteRoom = (req, res) => {
+const deleteRoom = async (req, res) => {
   const roomID = req.params.id;
 
   console.log('>> room id: ', req.params)
 
-  connection.query(
-    roomServices.deleteRoom,
-    [roomID],
-    (err, result) => {
-      if (err) throw new Error(`Something went wrong: ${err.message}`);
-      res.send(200, `Room was deleted: ${result}`);
-    }
-  )
+  // connection.query(
+  //   roomServices.deleteRoom,
+  //   [roomID],
+  //   (err, result) => {
+  //     if (err) throw new Error(`Something went wrong: ${err.message}`);
+  //     res.send(200, `Room was deleted: ${result}`);
+  //   }
+  // )
+
+  await connection.query(roomServices.deleteRoom, [roomID])
+  console.log(`Rome ${roomID} was deleted!`);
+  res.send(200, 'Delete successfully!');
 }
 
 const createANewRoom = (req, res) => {

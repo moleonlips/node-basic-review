@@ -25,11 +25,11 @@ li a {
 
 /* Change the link color to #111 (black) on hover */
 li a:hover {
-  background-color: #111;
+  background-color: #22be85;
 }
 
 .active {
-  background-color: #04AA6D;
+  background-color: #04aa6d;
 }
 
 .form {
@@ -40,4 +40,31 @@ li a:hover {
   width: 90%;
   max-width: 1080px;
   margin: 0 auto;
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 30px;
+}
+
+td,
+th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+thead tr {
+  background-color: #575757;
+  color: #fff;
+}
+
+tbody tr:hover {
+  background-color: #c2d3eb;
 }

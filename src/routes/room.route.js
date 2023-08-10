@@ -4,7 +4,7 @@ const roomControllers = require("../controllers/room.controller");
 
 roomRouter.get('/', roomControllers.getAllRooms);
 
-roomRouter.get('/:id', roomControllers.getRoomByID);
+roomRouter.get('/get-by-id/:id', roomControllers.getRoomByID);
 
 /// call form input
 roomRouter.get('/form', roomControllers.createANewRoom);
