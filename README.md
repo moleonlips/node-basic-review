@@ -4,6 +4,10 @@
 ## Async - Await
 - Async: Told that a function would be execute with synchronous mode
 - Await: Markup the step of process will be run
+## ejs view engine
+- <%= prints value of variable %>
+- <% call a function %>
+- <%- include an other partial view %>
 
 # LESSON 7: 
 ## Complete restful API CRUD for Room entry.
