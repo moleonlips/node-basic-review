@@ -19,7 +19,18 @@
   </ul>
 
   <div class="container">
-    <h3>Rooms has saved already!</h3>
+    <% if(newRoom) { %>
+      <h3>Rooms has saved already!</h3>
+      <p>Room info:</p>
+      <p>
+        - room: <%= room.room %> <br>
+          - length: <%= room.length %> <br>
+            - height: <%= room.height %> <br>
+              - width: <%= room.width %> <br>
+                - area: <%= room.length * room.width %> <br>
+                  - capacity: <%= room.capacity %>
+      </p>
+      <% } %>
   </div>
 </body>
 

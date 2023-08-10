@@ -17,10 +17,13 @@ const updateRoom =
 
 const deleteRoom = `DELETE FROM room WHERE room.id = ?`;
 
+const searchRooms = `SELECT * FROM room r WHERE r.room_name LIKE CONCAT ('%', ?, '%')`;
+
 module.exports = {
   getAllRooms,
   getRoomByID,
   addANewRoom,
   updateRoom,
-  deleteRoom
+  deleteRoom,
+  searchRooms
 }

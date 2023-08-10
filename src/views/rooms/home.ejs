@@ -1,112 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Booking</title>
-
-  <link rel="stylesheet" href="/css/style.css">
-
-</head>
+<head> <%- include('../partials/head.ejs') %> </head>
 
 <body>
-  <ul>
-    <li><a href="/room" class="active">Home</a></li>
-    <li><a href="/room/form">Create room</a></li>
-    <li><a href="">Contact</a></li>
-    <li style="float:right"><a class="active" href="#">About</a></li>
-  </ul>
 
-  <div class="container">
-    <table>
-      <thead>
-        <tr>
-          <th>Room name</th>
-          <th>Length</th>
-          <th>Height</th>
-          <th>Width</th>
-          <th>Area</th>
-          <th>Max capacity</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Alfreds Futterkiste</td>
-          <td>6</td>
-          <td>7</td>
-          <td>4</td>
-          <td>8</td>
-          <td>12</td>
-          <td>
-            <button>Edit</button>
-            <button>Del</button>
-          </td>
-        </tr>
-        <tr>
-          <td>Centro comercial Moctezuma</td>
-          <td>6</td>
-          <td>7</td>
-          <td>4</td>
-          <td>8</td>
-          <td>12</td>
-          <td>
-            <button>Edit</button>
-            <button>Del</button>
-          </td>
-        </tr>
-        <tr>
-          <td>Ernst Handel</td>
-          <td>6</td>
-          <td>7</td>
-          <td>4</td>
-          <td>8</td>
-          <td>12</td>
-          <td>
-            <button>Edit</button>
-            <button>Del</button>
-          </td>
-        </tr>
-        <tr>
-          <td>Island Trading</td>
-          <td>6</td>
-          <td>7</td>
-          <td>4</td>
-          <td>8</td>
-          <td>12</td>
-          <td>
-            <button>Edit</button>
-            <button>Del</button>
-          </td>
-        </tr>
-        <tr>
-          <td>Laughing Bacchus Winecellars</td>
-          <td>6</td>
-          <td>7</td>
-          <td>4</td>
-          <td>8</td>
-          <td>12</td>
-          <td>
-            <button>Edit</button>
-            <button>Del</button>
-          </td>
-        </tr>
-        <tr>
-          <td>Magazzini Alimentari Riuniti</td>
-          <td>6</td>
-          <td>7</td>
-          <td>4</td>
-          <td>8</td>
-          <td>12</td>
-          <td>
-            <button>Edit</button>
-            <button>Del</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+  <%- include('../partials/navbar.ejs'); %>
+
+    <div class="container">
+      <table>
+        <thead>
+          <tr>
+            <th>No.</th>
+            <th>Room name</th>
+            <th>Length</th>
+            <th>Height</th>
+            <th>Width</th>
+            <th>Area</th>
+            <th>Max capacity</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% data.forEach((room, step)=> { %>
+            <tr>
+              <td>
+                <%= step+1 %>
+              </td>
+              <td>
+                <%= room.room_name %>
+              </td>
+              <td>
+                <%= room.room_length %>
+              </td>
+              <td>
+                <%= room.room_width %>
+              </td>
+              <td>
+                <%= room.room_height %>
+              </td>
+              <td>
+                <%= room.room_area %>
+              </td>
+              <td>
+                <%= room.max_capacity %>
+              </td>
+              <td>
+                <button>Edit</button>
+                <button>Del</button>
+              </td>
+            </tr>
+            <% }); %>
+        </tbody>
+      </table>
+    </div>
 </body>
 
 </html>

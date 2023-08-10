@@ -9,7 +9,6 @@ const bodyParser = require("body-parser"); // Nodejs body parsing middleware
 
 const studentRouter = require('./routes/student.route');
 const roomRouter = require('./routes/room.route');
-const homeRouter = require('./routes/home.route');
 
 const app = express();
 app.use(express.json()); // for json

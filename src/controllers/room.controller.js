@@ -17,7 +17,7 @@ const getAllRooms = async (req, res) => {
   /// connect db using PROMISE WRAPPER
   const [result, fields] = await connection.query(`SELECT * FROM room`);
   console.log('>>> check result: ', result);
-  return res.render('rooms/home.ejs')
+  return res.render('rooms/home.ejs', { data: result })
 }
 
 const getRoomByID = async (req, res) => {
@@ -64,7 +64,7 @@ const saveRoom = async (req, res) => {
     [room, length, width, height, area, capacity]
   )
   console.log('>>> A new room was inserted: ', req.body);
-  res.render('rooms/save-success.ejs');
+  await res.render('rooms/save-success.ejs', { newRoom: req.body });
 }
 
 const updateRoomInfo = async (req, res) => {
@@ -115,11 +115,21 @@ const createANewRoom = (req, res) => {
   return res.render('rooms/form.ejs');
 }
 
+const searchRoom = async (req, res) => {
+  console.log('>>> key search: ', req.params.keysearch)
+  const [result, fields] = await connection.query(
+    roomServices.searchRooms, [req.params.keysearch]
+  )
+  if (result.length) res.send(200, result);
+  else res.send(400, `Have not any room with that name!`);
+}
+
 module.exports = {
   getAllRooms,
   getRoomByID,
   createANewRoom,
   saveRoom,
   updateRoomInfo,
-  deleteRoom
+  deleteRoom,
+  searchRoom
 };
