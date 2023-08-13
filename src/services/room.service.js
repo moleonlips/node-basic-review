@@ -2,7 +2,7 @@ const connection = require("../configs/database.config");
 
 const getAllRooms = async () => {
   const [result] = await connection.query(`SELECT * FROM room`);
-  return result && result.length > 0 ? result : {};
+  return result && result.length > 0 ? result : [];
 }
 
 

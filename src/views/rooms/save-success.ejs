@@ -1,39 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Booking</title>
-
-  <link rel="stylesheet" href="/css/style.css">
-
-</head>
+<head> <%- include('../partials/head.ejs') %> </head>
 
 <body>
-  <ul>
-    <li><a href="/room">Home</a></li>
-    <li><a href="/room/form">Form</a></li>
-    <li><a href="">Contact</a></li>
-    <li style="float:right"><a class="active" href="/home">About</a></li>
-  </ul>
 
-  <div class="container">
-    <h3>
-      <%= message %>
-    </h3>
-    <% if(newRoom.length !=0) { %>
-      <p>Room info:</p>
-      <p>
-        - room: <%= newRoom.room %> <br>
-          - length: <%= newRoom.length %> <br>
-            - height: <%= newRoom.height %> <br>
-              - width: <%= newRoom.width %> <br>
-                - area: <%= newRoom.length * newRoom.width %> <br>
-                  - capacity: <%= newRoom.capacity %>
-      </p>
-      <% } %>
-  </div>
+  <%- include('../partials/navbar.ejs'); %>
+
+    <div class="container">
+      <h3>
+        <%= message %>
+      </h3>
+      <% if(newRoom.length !=0) { %>
+        <p>Room info:</p>
+        <p>
+          - room: <%= newRoom.room %> <br>
+            - length: <%= newRoom.length %> <br>
+              - height: <%= newRoom.height %> <br>
+                - width: <%= newRoom.width %> <br>
+                  - area: <%= newRoom.length * newRoom.width %> <br>
+                    - capacity: <%= newRoom.capacity %>
+        </p>
+        <% } %>
+    </div>
 </body>
 
 </html>
