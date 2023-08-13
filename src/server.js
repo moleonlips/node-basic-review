@@ -1,5 +1,6 @@
 const express = require("express");
 const appConfig = require('./configs/app.config');
+const multer = require("multer");
 require('./helpers/env.helper');
 
 /*
@@ -28,3 +29,30 @@ app.listen(port, hostname, () => {
 app.use('/student', studentRouter);
 app.use('/room', roomRouter);
 app.use('/utility', utilityRouter)
+
+// UPLOAD FILE SIMPLE EXAMPLE
+const upload = multer({ dest: './uploads/utility-icons' }).array('uploaded_file', 3);
+app.post('/profile', function (req, res) {
+
+  upload(req, res, (err) => {
+
+    // error handler
+    if (err instanceof multer.MulterError) {
+      throw new Error(`An eror has occurred: ` + err.message);
+    }
+    else if (err) {
+      throw new Error(`Loi xong xac dinh: ${err}`);
+    }
+    else {
+      // req.file is the name of your file in the form above, here 'uploaded_file'
+      // req.body will hold the text fields, if there were any 
+
+      req.files.forEach((file, index) => {
+        console.log(`>>> file ${index}: ` + file.destination + '/' + file.filename);
+      })
+
+      console.log('req body: ', req.body)
+    }
+  })
+
+});
