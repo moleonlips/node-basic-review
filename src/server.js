@@ -31,7 +31,17 @@ app.use('/room', roomRouter);
 app.use('/utility', utilityRouter)
 
 // UPLOAD FILE SIMPLE EXAMPLE
-const upload = multer({ dest: './uploads/utility-icons' }).array('uploaded_file', 3);
+const upload = multer({
+  storage: multer.diskStorage({
+    destination: (req, res, cb) => {
+      cb(null, './uploads/utility-icons');
+    },
+    filename: (req, file, cb) => {
+      cb(null, file.originalname);
+    }
+  })
+}).array('uploaded_file', 3);
+
 app.post('/profile', function (req, res) {
 
   upload(req, res, (err) => {
@@ -48,7 +58,7 @@ app.post('/profile', function (req, res) {
       // req.body will hold the text fields, if there were any 
 
       req.files.forEach((file, index) => {
-        console.log(`>>> file ${index}: ` + file.destination + '/' + file.filename);
+        console.log(`>>> file ${index}: ` + file.destination + '/' + file.originalname);
       })
 
       console.log('req body: ', req.body)

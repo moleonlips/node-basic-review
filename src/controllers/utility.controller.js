@@ -1,9 +1,10 @@
 const utilityServices = require('../services/utility.service');
 
 const getAllUtilities = async (req, res) => {
-  const utilities = await utilityServices.getAllUtilities();
-  console.log(utilities);
-  res.send(utilities);
+  const result = await utilityServices.getAllUtilities();
+  console.log('>>> getAllUtilities ctrller: ', result);
+  await res.render('utilities/main.ejs', { utilities: result ? result : [] });
+  // res.send(utilities);
 }
 
 const addNewUtility = async (req, res) => {
@@ -17,7 +18,12 @@ const addNewUtility = async (req, res) => {
   res.send(200, `A neu utility was added!\n ${JSON.stringify(req.body)}`);
 }
 
+const getForm = async (req, res) => {
+  res.render('utilities/form.ejs');
+}
+
 module.exports = {
   getAllUtilities,
-  addNewUtility
+  addNewUtility,
+  getForm
 }

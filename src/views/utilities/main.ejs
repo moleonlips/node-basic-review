@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head> <%- include('../partials/head.ejs') %> </head>
+
+<body>
+
+  <%- include('../partials/navbar.ejs'); %>
+
+    <div class="container">
+      <table>
+        <thead>
+          <tr>
+            <th>No.</th>
+            <th>Utility name</th>
+            <th>Fee</th>
+            <th>Description</th>
+            <th>Icon</th>
+            <th>Unit</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% if(utilities.length> 0) { utilities.forEach((utility, index)=> { %>
+            <tr>
+              <td>
+                <%= index + 1 %>
+              </td>
+              <td>
+                <%=utility.utility_name%>
+              </td>
+              <td>
+                <%=utility.fee%>
+              </td>
+              <td>
+                <%=utility.description%>
+              </td>
+              <td>
+                <%=utility.icon%>
+              </td>
+              <td>
+                <%=utility.unit%>
+              </td>
+              <td></td>
+            </tr>
+            <% }) }%>
+        </tbody>
+      </table>
+    </div>
+
+    <br><br><br>
+
+    <div class="container">
+      <form action="/profile" enctype="multipart/form-data" method="post">
+        <div class="form-group">
+          <input type="file" class="form-control-file" name="uploaded_file" multiple>
+          <input type="text" class="form-control" placeholder="Number of speakers" name="nspeakers">
+          <input type="submit" value="Get me the stats!" class="btn btn-default">
+        </div>
+      </form>
+
+    </div>
+
+    <!-- <%- include('../partials/right-window.ejs') %> -->
+</body>
+
+</html>
