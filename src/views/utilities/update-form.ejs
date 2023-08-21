@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head> <%- include('../partials/head.ejs') %> </head>
+
+<body>
+
+  <%- include('../partials/navbar.ejs'); %>
+
+    <div class="form">
+      <form action="/utility/update/<%=utilityUpdate.id%>" method="post">
+        <fieldset>
+          <legend>
+            <h2>Update utility <%=utilityUpdate.id%>:</h2>
+          </legend>
+          <label for="u_name">Utility name:</label>
+          <input value="<%=utilityUpdate.utility_name%>" type="text" id="u_name" name="u_name"><br><br>
+          <label for="fee">Fee:</label>
+          <input value="<%=utilityUpdate.fee%>" type="number" id="fee" name="fee"><br><br>
+          <label for="description">Description:</label>
+          <input value="<%=utilityUpdate.description%>" type="text" id="description" name="description"><br><br>
+          <label for="unit">Unit:</label>
+          <input value="<%=utilityUpdate.unit%>" type="text" id="unit" name="unit"><br><br>
+          <label for="icon">Icon:</label>
+          <input value="<%=utilityUpdate.icon%>" type="file" id="icon" name="icon"><br><br>
+          <input type="submit" value="Submit">
+        </fieldset>
+      </form>
+    </div>
+</body>
+
+</html>

@@ -27,7 +27,7 @@ const saveRoom = async (req, res) => {
   /// MYSQL2 PROMISS WRAPPER
   roomServices.addANewRoom(room, length, width, height, capacity, area);
   console.log('>>> A new room was inserted: ', req.body);
-  await res.render('rooms/save-success.ejs', { newRoom: req.body, message: 'Insert successfully!' });
+  res.redirect('/room');
 }
 
 const updateRoomInfo = async (req, res) => {

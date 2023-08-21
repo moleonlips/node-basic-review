@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%- include('../partials/head.ejs')%>
+</head>
+
+<body>
+  <div class="container">
+
+    <%- include('../partials/head.ejs')%>
+      <h1>Do you wanna delete this utility?</h1>
+      <p>
+        - <%=data.utility_name%>
+      </p>
+      <p>
+        - <%=data.fee%>
+      </p>
+      <p>
+        - <%=data.description%>
+      </p>
+
+      <a href="/utility/del/<%=data.id%>">Delete this utility!</a>
+  </div>
+</body>
+
+</html>

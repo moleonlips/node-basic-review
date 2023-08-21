@@ -41,7 +41,10 @@
               <td>
                 <%=utility.unit%>
               </td>
-              <td></td>
+              <td>
+                <a href="/utility/del-confirm/<%=utility.id%>">Del</a>
+                <a href="/utility/update-form/<%=utility.id%>">Update</a>
+              </td>
             </tr>
             <% }) }%>
         </tbody>
@@ -51,9 +54,9 @@
     <br><br><br>
 
     <div class="container">
-      <form action="/profile" enctype="multipart/form-data" method="post">
+      <form action="/utility/stats" enctype="multipart/form-data" method="post">
         <div class="form-group">
-          <input type="file" class="form-control-file" name="uploaded_file" multiple>
+          <input type="file" class="form-control-file" name="uploaded_file">
           <input type="text" class="form-control" placeholder="Number of speakers" name="nspeakers">
           <input type="submit" value="Get me the stats!" class="btn btn-default">
         </div>
